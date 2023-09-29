@@ -28,7 +28,7 @@
 <body>
 
     <!-- Barra de navegación -->
-    <div class="container-fluid position-relative nav-bar p-0">
+    <div class="container-fluid position-relative nav-bar p-0 ">
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
                 <a href="index.html" class="navbar-brand">
@@ -51,7 +51,7 @@
 
 
     <!-- Header Start -->
-    <div class="container-fluid page-header">
+    <div class="container-fluid page-header">   <!-- page-header se encuentra en la carpeta css, fue modificada para que apareciera una imagen -->
         <div class="container">
             <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
                 <h3 class="display-4 text-white  text-uppercase">Información acerca de nosotros</h3>
@@ -66,13 +66,12 @@
     <!-- Header End -->
 
 
-    <!-- About Start -->
+    <!-- Apartado de acerca de nosotros -->
     <div class="container-fluid py-2">
-        <div class="container ">
-            <div class="row">
-                <div class="col-lg-6 pt-5 pb-lg-5">
-                    <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
-                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Acerca de nosotros</h6>
+        <div class="container">                                 <!-- Se genera un contenedor invisible, no tiene color de fondo ni nada-->
+            <div class="row align-items-center">
+                <div class="about-text bg-white p-4 p-lg-5 my-lg-5 bg-light shadow" style="padding: 30px;">
+                        <h6 class="row align-items-center text-primary text-uppercase" style="letter-spacing: 5px;">Acerca de nosotros</h6>
                         <h1 class="text-esime mb-3">Creadores del proyecto</h1>
                         <p align = "justify"> Estudiantes de la ESIME Zacatenco, cursando la carrera de Ingeniería en Comunicaciones y Electrónica, al hacer una breve recapitulación de los semestres que han cursado, encontraron un área de oportunidad que podrían aprovechar y así, redituar un poco de lo que la ESIME les ha brindado, para los estudiantes de su misma carrera </p>
                         <div class="row mb-4">
@@ -111,11 +110,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
-    <!-- About End -->
+    <!-- Fin del apartado sobre nosotros  -->
  
     <div class="container-fluid bg-dark text-center">
         <div class="bg-dark shadow" style="padding: 30px;">
@@ -134,7 +132,7 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    <a href="#" class="btn btn-lg btn-success btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
     <!-- JavaScript Libraries -->
