@@ -111,18 +111,28 @@
                                         <option value="6">6°</option>
                                         <option value="7">7°</option>
                                         -->
-                                        <input type="checkbox" id="2" name="2" value="2">
-                                        <label for="vehicle1"> 2°</label><br>
-                                        <input type="checkbox" id="3" name="3" value="3">
-                                        <label for="vehicle1"> 3°</label><br>
-                                        <input type="checkbox" id="4" name="4" value="4">
-                                        <label for="vehicle1"> 4°</label><br>
-                                        <input type="checkbox" id="5" name="5" value="5">
-                                        <label for="vehicle1"> 5°</label><br>
-                                        <input type="checkbox" id="6" name="6" value="6">
-                                        <label for="vehicle1"> 6°</label><br>
-                                        <input type="checkbox" id="7" name="7" value="7">
-                                        <label for="vehicle1"> 7°</label><br>
+                                      <div class="dropdown">
+                                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Seleccionar semestres
+                                      </button>
+                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <form id="checkboxForm">
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="2do" value="2do">
+                                            <label class="form-check-label" for="2do">
+                                              2do Semestre
+                                            </label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="3ro" value="3ro">
+                                            <label class="form-check-label" for="3ro">
+                                              3er Semestre
+                                            </label>
+                                          </div>
+                                          <!-- Resto de los checkboxes -->
+                                        </form>
+                                      </div>
+                                    </div>
                                     </select>
                                 </div>
                             </div>
