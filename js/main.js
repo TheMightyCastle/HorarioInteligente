@@ -111,13 +111,48 @@ $('#checkboxForm input[type="checkbox"]').change(function() {
 function checkValidCombination(semesters) {
   // Objeto con las combinaciones válidas
   var validCombinations = {
-    '2do': ['3ro'],
-    '3ro': ['2do', '4to'],
-    '4to': ['3ro', '5to'],
-    '5to': ['4to', '6to'],
-    '6to': ['5to', '7mo'],
-    '7mo': ['6to']
-  };
+    '2do': [
+        ['3ro'],
+        ['4to'],
+        ['3ro', '4to']
+    ],
+    '3ro': [
+        ['2do'],
+        ['4to'],
+        ['5to'],
+        ['2do', '4to'],
+        ['4to', '5to']
+    ],
+    '4to': [
+        ['3ro'],
+        ['2do'],
+        ['5to'],
+        ['6to'],
+        ['3ro', '5to'],
+        ['2do', '3ro'],
+        ['5to', '6to']
+    ],
+    '5to': [
+        ['3ro'],
+        ['4to'],
+        ['6to'],
+        ['7to'],
+        ['3ro', '4to'],
+        ['4to', '6to'],
+        ['6to', '7to']
+    ],
+    '6to': [
+        ['4to'],
+        ['5to'],
+        ['7to'],
+        ['5to', '7mo'],
+        ['4to', '5to']
+    ],
+    '7mo': [
+        ['6to'],
+        ['5to', '6to']
+    ]
+};
   
   // Verificar si la combinación es válida
   for (var i = 0; i < semesters.length; i++) {
