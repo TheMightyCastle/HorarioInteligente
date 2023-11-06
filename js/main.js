@@ -83,7 +83,61 @@
 //</script>
 
 
+// -----------------------------------------------------------------------------------------------------------------------
 
+$('#checkboxForm input[type="checkbox"]').change(function() {
+  var checkedBoxes = $('#checkboxForm input[type="checkbox"]:checked');
+  
+  // Limitar a un máximo de 3 checkboxes seleccionados
+  if (checkedBoxes.length > 3) {
+    this.checked = false;
+    return;
+  }
+  
+  var semesters = checkedBoxes.map(function() {
+    return this.value;
+  }).get();
+
+  // Verificar las restricciones de selección
+  var validCombination = checkValidCombination(semesters);
+  if (!validCombination) {
+    this.checked = false;
+    return;
+  }
+  
+  updateDropdownText(semesters);
+});
+
+function checkValidCombination(semesters) {
+  // Objeto con las combinaciones válidas
+  var validCombinations = {
+    '2do': ['3ro'],
+    '3ro': ['2do', '4to'],
+    '4to': ['3ro', '5to'],
+    '5to': ['4to', '6to'],
+    '6to': ['5to', '7mo'],
+    '7mo': ['6to']
+  };
+  
+  // Verificar si la combinación es válida
+  for (var i = 0; i < semesters.length; i++) {
+    var currentSemester = semesters[i];
+    var allowedNext = validCombinations[currentSemester];
+    var nextSemester = semesters[i + 1];
+    
+    if (nextSemester && allowedNext.indexOf(nextSemester) === -1) {
+      return false;
+    }
+  }
+  
+  return true;
+}
+
+function updateDropdownText(selectedSemesters) {
+  $('#dropdownMenuButton').text('Semestres seleccionados: ' + selectedSemesters.join(', '));
+}
+
+// -----------------------------------------------------------------------------------------------------------------------
 
 
 
