@@ -1,3 +1,129 @@
+/**************************************MENUs****************************************************** */
+$(document).ready(function(){
+    
+    var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+       removeItemButton: true,
+       maxItemCount:5,
+       searchResultLimit:5,
+       renderChoiceLimit:5
+     }); 
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+   var menu1Choices = new Choices('#choices-menu-1', {
+       shouldSort: false,
+       removeItemButton: true,
+       maxItemCount: 3,
+       addItemText: function (value) {
+           return 'Selecciona tu semestre.';
+       },
+   });
+
+   var menu2Choices = new Choices('#choices-menu-2', {
+       shouldSort: false,
+       removeItemButton: true,
+       maxItemCount: 8,
+       addItemText: function (value) {
+           return 'Selecciona tus materias [Carga mínima (mínimo 3) - Carga máxima (máximo 8)].';
+       },
+   });
+
+   // Relaciones entre opciones del menú 1 y menú 2
+   var relationships = {
+       '2': ['Electricidad Y Magnetismo', 'Humanidades II', 'Ecuaciones Diferenciales', 'Cálculo Vectorial', 'Química Aplicada'],
+       '3': ['Campos y Ondas', 'Electromagnéticas', 'Circuitos de C.A. y C.D', 'Estructuras y Base de Datos', 'Ondas Mecánicas', 'Transformadas de Funciones', 'Variable Completa'],
+       '4': ['Análisis Numérico', 'Economía', 'Mecánica Cuántica y Mecánica Estadística', 'Mediciones', 'Ondas Electromagnéticas Guiadas', 'Probabilidad y Estadística', 'Teorema de Circuitos Eléctricos'],
+       '5': ['Administración', 'Análisis de Transitorios', 'Circuitos Digitales', 'Dispositivos', 'Fundamentos de Máquinas Eléctricas', 'Comunicaciones Analógicas', 'Teoría de Radiadores Electromagnéticos'],
+       '6': ['Electrónica Digital', 'Electrónica Lineal', 'Microprocesadores', 'Comunicaciones Digitales', 'Señales y Sistemas de Control Clásico', 'Señales y Vibraciones.'],
+       '7': ['Electroacústica y Transductores', 'Espacio de Estados', 'Creación y Evaluación de Proyectos', 'Humanidades III: Desarrollo Humano', 'Microcontroladores', 'Procesamiento Digital de Señales', 'Redes Básicas'],
+   };
+
+   // Manejar cambios en el menú 1
+   var selectMenu1 = document.getElementById('choices-menu-1');
+   var selectMenu2 = document.getElementById('choices-menu-2');
+
+   selectMenu1.addEventListener('change', function () {
+       var selectedValues = Array.from(selectMenu1.selectedOptions, option => option.value);
+       var allowedValues = [];
+
+       // Obtener las materias permitidas según el menú 1
+       selectedValues.forEach(function (value) {
+           if (relationships[value]) {
+               allowedValues = allowedValues.concat(relationships[value]);
+           }
+       });
+
+       // Actualizar las opciones del menú 2
+       menu2Choices.setChoices(allowedValues.map(function (value) {
+           return { value: value, label: value };
+       }), 'value', 'label', true);
+   });
+
+   /***************************************************************************************************************************/
+
+var menu3Choices = new Choices('#choices-menu-3', {
+    shouldSort: false,
+    removeItemButton: true,
+    maxItemCount: 1,
+    addItemText: function (value) {
+        return 'Entrada o Salida';
+    },
+});
+
+var menu4Choices = new Choices('#choices-menu-4', {
+    shouldSort: false,
+    removeItemButton: true,
+    maxItemCount: 1,
+    addItemText: function (value) {
+        return 'Valores de Salida (horas)';
+    },
+});
+
+
+// Manejar cambios en el menú 3
+var selectMenu3 = document.getElementById('choices-menu-3');
+
+selectMenu3.addEventListener('change', function () {
+    var selectedValue = selectMenu3.value;
+
+    // Llenar dinámicamente las opciones del menú 4 según la selección en el menú 3
+    var options = [];
+
+    if (selectedValue === 'salida') {
+        options = [
+            { value: '20', label: ' 11:30' },
+            { value: '21', label: ' 13:00' },
+            { value: '22', label: ' 16:00' },
+            { value: '23', label: ' 17:30' },
+            { value: '24', label: ' 19:00' },
+            { value: '25', label: ' 20:30' },
+            { value: '26', label: ' 22:00' },
+            // Agrega más opciones según tus necesidades
+        ];
+    } else if (selectedValue === 'entrada') {
+        options = [
+            { value: '30', label: ' 07:00' },
+            { value: '31', label: ' 08:30' },
+            { value: '32', label: ' 10:00' },
+            { value: '33', label: ' 11:30' },
+            { value: '34', label: ' 13:00' },
+            { value: '35', label: ' 16:00' },
+            { value: '36', label: ' 17:30' },
+            { value: '37', label: ' 19:00' },
+            // Agrega más opciones según tus necesidades
+        ];
+    }
+
+    menu4Choices.setChoices(options, 'value', 'label', true);
+});
+
+});
+/******************************************************************************* */
+
+
+
+/****************************************************************************** */
 (function ($) {
     "use strict";
     
@@ -30,149 +156,8 @@
     $('.back-to-top').click(function () {
         $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
         return false;
-    });
-
-    // Carrusel de testimonios, aquí van las fotos de mis amix
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1500,
-        margin: 30,
-        dots: true,
-        loop: true,
-        center: true,
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            }
-        }
-    });
+    });   
     
 })(jQuery);
 
-
-        //<script>                                                          El código que creo utilizaremos para despegar la información de los semestres
-    const semesterSelect = document.getElementById('semesterSelect');       // Utilizado para seleccionar el semestre
-    const subjectDropdown = document.getElementById('subjectDropdown');     //Utilizado para enseñar las materias del semestre seleccionado
-
-    semesterSelect.addEventListener('change', function() {
-        if (semesterSelect.value !== 'Select Semester') {
-            subjectDropdown.style.display = 'block';
-            // Here you can dynamically populate the subject dropdown based on the selected semester using JavaScript
-            // For simplicity, let's add a couple of options
-            subjectDropdown.innerHTML = `
-                <select class="custom-select px-4" style="height: 47px;">
-                    <option selected>Select Subject</option>
-                    <option>Subject 1</option>
-                    <option>Subject 2</option>
-                </select>
-            `;
-        } else {
-            subjectDropdown.style.display = 'none';
-            subjectDropdown.innerHTML = ''; // Clear the contents
-        }
-    });
-//</script>
-
-
-// -----------------------------------------------------------------------------------------------------------------------
-
-$('#checkboxForm input[type="checkbox"]').change(function() {
-  var checkedBoxes = $('#checkboxForm input[type="checkbox"]:checked');
-  
-  // Limitar a un máximo de 3 checkboxes seleccionados
-  if (checkedBoxes.length > 3) {
-    this.checked = false;
-    return;
-  }
-  
-  var semesters = checkedBoxes.map(function() {
-    return this.value;
-  }).get();
-
-  // Verificar las restricciones de selección
-  var validCombination = checkValidCombination(semesters);
-  if (!validCombination) {
-    this.checked = false;
-    return;
-  }
-  
-  updateDropdownText(semesters);
-});
-
-function checkValidCombination(semesters) {
-  // Objeto con las combinaciones válidas
-  var validCombinations = {
-    '2do': [
-        ['3ro'],
-        ['4to'],
-        ['3ro', '4to']
-    ],
-    '3ro': [
-        ['2do'],
-        ['4to'],
-        ['5to'],
-        ['2do', '4to'],
-        ['4to', '5to']
-    ],
-    '4to': [
-        ['3ro'],
-        ['2do'],
-        ['5to'],
-        ['6to'],
-        ['3ro', '5to'],
-        ['2do', '3ro'],
-        ['5to', '6to']
-    ],
-    '5to': [
-        ['3ro'],
-        ['4to'],
-        ['6to'],
-        ['7to'],
-        ['3ro', '4to'],
-        ['4to', '6to'],
-        ['6to', '7to']
-    ],
-    '6to': [
-        ['4to'],
-        ['5to'],
-        ['7to'],
-        ['5to', '7mo'],
-        ['4to', '5to']
-    ],
-    '7mo': [
-        ['6to'],
-        ['5to', '6to']
-    ]
-};
-  
-  // Verificar si la combinación es válida
-  for (var i = 0; i < semesters.length; i++) {
-    var currentSemester = semesters[i];
-    var allowedNext = validCombinations[currentSemester];
-    var nextSemester = semesters[i + 1];
-    
-    if (nextSemester && allowedNext.indexOf(nextSemester) === -1) {
-      return false;
-    }
-  }
-  
-  return true;
-}
-
-function updateDropdownText(selectedSemesters) {
-  $('#dropdownMenuButton').text('Semestres seleccionados: ' + selectedSemesters.join(', '));
-}
-
-// -----------------------------------------------------------------------------------------------------------------------
-
-
-
+/******************************************************************************* */
