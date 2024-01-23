@@ -102,57 +102,63 @@
  <div class="container-fluid mt-5 pb-5">
     <div class="bg-light shadow" style="padding: 30px;">
         <div class="row align-items-center" style="min-height: 60px;">
+            <h3 class="text-primary text-uppercase"><span class="text-success">Sigue estos pasos</span> para generar tu horario:</h3>
             <div class="col-md-10">
                 <div class="row justify-content-around">
-                    <div class="col-md-3">
-                        <div class="mb-3 mb-md-0">
-                            <div class="row d-flex justify-content-center mt-3">
-                                <p align="center" class="align-items-center"> <br> Realiza la selección de tu semestre (máximo 3)</p>
-                                <br><br>
-                                <select id="choices-menu-1" placeholder="Selecciona tu semestre" multiple>
-                                    <option value="2">Segundo</option>
-                                    <option value="3">Tercero</option>
-                                    <option value="4">Cuarto</option>
-                                    <option value="5">Quinto</option>
-                                    <option value="6">Sexto</option>
-                                    <option value="7">Séptimo</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mb-3 mb-md-0">
-                            <div class="row d-flex justify-content-center mt-3">
-                                <p align="center" class="align-items-center"> <br> Realiza la selección de tus materias (contempla la carga mínima y máxima)</p>
-                                <select id="choices-menu-2" placeholder="Selecciona tus materias" multiple>
-                                    <!-- Opciones del menú 2 se llenarán dinámicamente -->
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mb-3 mb-md-0">
-                            <div class="row d-flex justify-content-center mt-3">
-                                <p align="center" class="align-items-center"> <br>¿A que prefieres que se le de prioridad?</p>
-                                <br><br>
-                                <select id="choices-menu-3" placeholder="Selecciona tu prioridad" multiple>
-                                    <option value="entrada">Entrada</option>
-                                    <option value="salida">Salida</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mb-3 mb-md-0">    
-                            <div class="row d-flex justify-content-center mt-3">
-                                <p align="center" class="align-items-center"> <br> Selecciona la hora que mejor te acomode<br><br><br></p>
+                    <!-- ... (código anterior) ... -->
 
-                                <select id="choices-menu-4" placeholder="Selecciona la hora" multiple>
-                                    <!-- Opciones del menú 4 se llenarán dinámicamente -->
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+<div class="col-md-3">
+    <div class="mb-3 mb-md-0 text-center">
+        <div class="row d-flex justify-content-center mt-3">
+            <h6 class="text-primary text-uppercase mb-3"><span class="text-success">1. Realiza la selección</span> de tu semestre (máximo 3)<br><br></h6>
+            <select id="choices-menu-1" class="mb-3" placeholder="Selecciona tu semestre" multiple>
+                <option value="2">Segundo</option>
+                <option value="3">Tercero</option>
+                <option value="4">Cuarto</option>
+                <option value="5">Quinto</option>
+                <option value="6">Sexto</option>
+                <option value="7">Séptimo</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-3">
+    <div class="mb-3 mb-md-0 text-center">
+        <div class="row d-flex justify-content-center mt-3">
+            <h6 class="text-primary text-uppercase mb-3"><span class="text-success">2. Realiza la selección de tus materias</span> (contempla la carga mínima y máxima)</h6>
+            <select id="choices-menu-2" class="mb-3" placeholder="Selecciona tus materias" multiple>
+                <!-- Opciones del menú 2 se llenarán dinámicamente -->
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-3">
+    <div class="mb-3 mb-md-0 text-center">
+        <div class="row d-flex justify-content-center mt-3">
+            <h6 class="text-primary text-uppercase mb-3"><span class="text-success">3. ¿A qué prefieres que se le</span> prioridad?, ¿Entrada o salida?<br><br></h6>
+            <select id="choices-menu-3" class="mb-3" placeholder="Selecciona tu prioridad" multiple>
+                <option value="entrada">Entrada</option>
+                <option value="salida">Salida</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-3">
+    <div class="mb-3 mb-md-0 text-center">    
+        <div class="row d-flex justify-content-center mt-3">
+            <h6 class="text-primary text-uppercase mb-3"><span class="text-success">4. Selecciona la hora que</span> mejor te acomode<br><br><br></h6>
+            <select id="choices-menu-4" class="mb-3" placeholder="Selecciona la hora" multiple>
+                <!-- Opciones del menú 4 se llenarán dinámicamente -->
+            </select>
+        </div>
+    </div>
+</div>
+
+<!-- ... (código posterior) ... -->
+
                 </div>
             </div>
             <div class="col-md-2">
